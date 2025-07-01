@@ -22,7 +22,7 @@ PostgreSQL (Recommended) or SQLite (Simple, no setup needed)
 (Follow these steps one by one)
 
 🔹 Step 1: Download the Code
-git clone https://github.com/yourusername/secure-file-sharing.git
+git clone https://github.com/Geek-shreya/file-sharing.git
 cd secure-file-sharing
 
 🔹 Step 2: Create a Virtual Environment
