@@ -1,0 +1,234 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7890",
+    "name": "File Sharing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Ops User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"opsuser1\",\n    \"email\": \"ops1@example.com\",\n    \"password\": \"testpass123\",\n    \"user_type\": \"OPS\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/register/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "register", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Client User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"clientuser1\",\n    \"email\": \"client1@example.com\",\n    \"password\": \"testpass123\",\n    \"user_type\": \"CLIENT\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/register/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "register", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Ops User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"opsuser1\",\n    \"password\": \"testpass123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Client User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"clientuser1\",\n    \"password\": \"testpass123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"token\": \"verification-token-from-email\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/verify-email/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "verify-email", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Files",
+      "item": [
+        {
+          "name": "Upload File",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Token {{ops_token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "/path/to/your/file.docx"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/files/upload/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "files", "upload", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Files",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Token {{client_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/files/list/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "files", "list", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Request Download Link",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Token {{client_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"file_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/files/download/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "files", "download", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download File",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Token {{client_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/download-file/abc123/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "download-file", "abc123", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "ops_token",
+      "value": "your-ops-user-token"
+    },
+    {
+      "key": "client_token",
+      "value": "your-client-user-token"
+    }
+  ]
+}
