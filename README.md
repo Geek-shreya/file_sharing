@@ -23,7 +23,7 @@ PostgreSQL (Recommended) or SQLite (Simple, no setup needed)
 
 🔹 Step 1: Download the Code
 git clone https://github.com/Geek-shreya/file-sharing.git
-cd secure-file-sharing
+cd file-sharing
 
 🔹 Step 2: Create a Virtual Environment
 (Keeps Python packages organized)
